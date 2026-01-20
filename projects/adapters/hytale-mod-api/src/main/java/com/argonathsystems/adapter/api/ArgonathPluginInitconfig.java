@@ -5,7 +5,7 @@ import com.hypixel.hytale.server.core.plugin.JavaPluginInit;
 /**
  * Wrapper for Hytale's JavaPluginInit to provide Argonath-specific context.
  */
-public class ArgonathPluginInitconfig extends JavaPluginInit {
+public class ArgonathPluginInitconfig {
     
     private final JavaPluginInit handle;
 

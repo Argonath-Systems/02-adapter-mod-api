@@ -7,9 +7,9 @@ public abstract class ArgonathPlugin extends JavaPlugin {
     
     private final ArgonathPluginInitconfig argonathInit;
 
-    public ArgonathPlugin(ArgonathPluginInitconfig init) {
+    public ArgonathPlugin(JavaPluginInit init) {
         super(init);
-        this.argonathInit = init;
+        this.argonathInit = new ArgonathPluginInitconfig(init);
     }
     
     public ArgonathPluginInitconfig getArgonathInit() {
