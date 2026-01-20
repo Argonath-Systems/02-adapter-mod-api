@@ -1,0 +1,17 @@
+{
+  "Group": "com.argonathsystems.mods",
+  "Name": "HytaleModApi",
+  "Version": "1.0.0-SNAPSHOT",
+  "Description": "Hytale Mod API",
+  "Authors": [
+    {
+      "Name": "LordOfTheTales Team"
+    }
+  ],
+  "ServerVersion": "*",
+  "Dependencies": {},
+  "OptionalDependencies": {},
+  "DisabledByDefault": false,
+  "IncludesAssetPack": true,
+  "Main": "com.argonathsystems.adapter.hytalemodapi.HytaleModApiPlugin"
+}
