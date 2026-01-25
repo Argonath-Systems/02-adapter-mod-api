@@ -67,7 +67,7 @@ dependencies {
 
 ## 🏷️ Tags
 
-`mod-api adapter wrapper simplified helpers` `library` `framework` `hytale` `lord-of-the-tales` `argonath-systems`
+`mod-api adapter wrapper simplified helpers` `library` `framework` `hytale` `argonath` `argonath-systems`
 
 ## 🔗 Dependencies
 
