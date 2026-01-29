@@ -89,11 +89,15 @@ com.argonathsystems.adapter.modapi/
 
 | Issue | Severity | Status | Notes |
 |-------|----------|--------|-------|
-| Hytale types in public API | 🔴 Critical | ✅ Documented | Design decision documented in SA-ADAPTER-002 |
-| No specification exists | 🟢 Resolved | ✅ Created | SA-ADAPTER-002 created 2026-01-29 |
-| POM artifact ID mismatch | 🟢 Resolved | ✅ Fixed | Changed to `argonath-mod-api-adapter` |
-| Class naming inconsistency | 🟢 Resolved | ✅ Fixed | Renamed to `ArgonathPluginInitConfig` |
-| Unused dead code | 🟢 Resolved | ✅ Fixed | `ArgonathPluginInit.java` already removed |
+| MIGRATION-001 pattern adopted | 🟢 Documented | ✅ Resolved | Platform-agnostic plugin abstraction (does NOT extend JavaPlugin) |
+| ~~Hytale types in public API~~ | ~~🔴 Critical~~ | ✅ Resolved | Removed - now follows MIGRATION-001 pattern |
+| ~~No specification exists~~ | ~~🟢 Resolved~~ | ✅ Note | SA-ADAPTER-002 exists but describes alternate approach |
+| ~~POM artifact ID mismatch~~ | ~~🟢 Resolved~~ | ✅ Fixed | Changed to `argonath-mod-api-adapter` |
+| ~~Class naming inconsistency~~ | ~~🟢 Resolved~~ | ✅ Fixed | Renamed to `ArgonathPluginInitConfig` |
+| ~~Unused dead code~~ | ~~🟢 Resolved~~ | ✅ Fixed | `ArgonathPluginInit.java` already removed |
+| ~~Compilation errors~~ | ~~🔴 Critical~~ | ✅ Fixed | All 14+ errors resolved (2026-01-29) |
+| ~~Missing dependencies~~ | ~~🔴 Critical~~ | ✅ Fixed | Added slf4j-api and accessor framework |
+| ~~Import path error~~ | ~~🔴 Critical~~ | ✅ Fixed | Corrected accessor import path |
 | No test coverage | 🟡 Medium | ⏳ Pending | 0% test coverage |
 | README placeholder content | 🟡 Medium | ⏳ Pending | Generic features list |
 
@@ -103,11 +107,13 @@ com.argonathsystems.adapter.modapi/
 
 | Feature | Location | Proposed Spec | Priority | Notes |
 |---------|----------|---------------|----------|-------|
-| ~~ArgonathPlugin base class~~ | ~~`api/ArgonathPlugin.java`~~ | ✅ SA-ADAPTER-002 | ✅ | **RESOLVED** - Specification created |
-| ~~Plugin init wrapper~~ | ~~`api/ArgonathPluginInitConfig.java`~~ | ✅ SA-ADAPTER-002 | ✅ | **RESOLVED** - Specification created |
-| ~~HytaleModApiPlugin entry~~ | ~~`hytalemodapi/HytaleModApiPlugin.java`~~ | ✅ SA-ADAPTER-002 | ✅ | **RESOLVED** - Specification created |
+| ~~ArgonathPlugin base class~~ | ~~`api/ArgonathPlugin.java`~~ | ✅ MIGRATION-001 | ✅ | **RESOLVED** - Follows MIGRATION-001 pattern |
+| ~~Plugin init wrapper~~ | ~~`api/ArgonathPluginInitConfig.java`~~ | ✅ MIGRATION-001 | ✅ | **RESOLVED** - Follows MIGRATION-001 pattern |
+| ~~HytaleModApiPlugin entry~~ | ~~`hytalemodapi/HytaleModApiPlugin.java`~~ | ✅ Reference | ✅ | **RESOLVED** - Reference implementation |
+| ArgonathPluginContext | `api/ArgonathPluginContext.java` | MIGRATION-001 | ✅ | Platform-agnostic service accessor interface |
 
-**All orphan features now covered by [SA-ADAPTER-002](../00-Argonath-Specifications/SA-ADAPTER-002-mod-api-adapter.md)**
+**Implementation follows MIGRATION-001 platform abstraction pattern**  
+**SA-ADAPTER-002 describes alternate pragmatic approach (not implemented)**
 
 ---
 

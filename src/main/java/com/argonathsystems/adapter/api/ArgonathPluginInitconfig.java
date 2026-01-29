@@ -5,11 +5,11 @@ import com.hypixel.hytale.server.core.plugin.JavaPluginInit;
 /**
  * Wrapper for Hytale's JavaPluginInit to provide Argonath-specific context.
  */
-public class ArgonathPluginInitconfig {
+public class ArgonathPluginInitConfig {
     
     private final JavaPluginInit handle;
 
-    public ArgonathPluginInitconfig(JavaPluginInit init) {
+    public ArgonathPluginInitConfig(JavaPluginInit init) {
         // Since we can't easily copy fields from the handle without knowing them/having getters, 
         // and we can't call a copy constructor on super (JavaPluginInit),
         // we rely on the fact that we are compiling against a stub or SDK 

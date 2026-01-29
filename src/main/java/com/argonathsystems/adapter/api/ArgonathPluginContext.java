@@ -1,6 +1,6 @@
 package com.argonathsystems.adapter.api;
 
-import com.argonathsystems.framework.accessor.accessorapi.*;
+import com.argonathsystems.framework.accessorapi.*;
 import org.slf4j.Logger;
 
 /**
@@ -83,12 +83,13 @@ public interface ArgonathPluginContext {
      */
     StorageAccessor getStorageAccessor();
     
-    /**
-     * Get the text styling accessor for formatted text.
-     * 
-     * @return Text styling accessor instance
-     */
-    TextStylingAccessor getTextStylingAccessor();
+    // TODO: Add TextStylingAccessor when available in accessor framework
+    // /**
+    //  * Get the text styling accessor for formatted text.
+    //  * 
+    //  * @return Text styling accessor instance
+    //  */
+    // TextStylingAccessor getTextStylingAccessor();
     
     // Add additional accessors as needed for migration
     // WorldAccessor, NPCAccessor, QuestAccessor, etc.

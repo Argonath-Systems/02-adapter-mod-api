@@ -11,17 +11,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Architectural review and documentation
 - Orphan features tracking
 - Issue tracking for platform abstraction violations
+- **MIGRATION-001 Pattern Adoption**: Platform-agnostic plugin lifecycle (2026-01-29)
+- Dependencies: slf4j-api and argonath-grey-havens-accessor (2026-01-29)
+- ArgonathPluginContext interface for framework service access (2026-01-29)
 
 ### Changed
+- **BREAKING**: ArgonathPlugin now follows MIGRATION-001 pattern (does NOT extend JavaPlugin)
+- **BREAKING**: Plugin initialization uses platform-agnostic context pattern
 
 ### Deprecated
 
 ### Removed
 - Unused `ArgonathPluginInit.java` class
+- TextStylingAccessor reference (not yet available in accessor framework)
 
 ### Fixed
+- **CRITICAL**: Class naming mismatch `ArgonathPluginInitconfig` → `ArgonathPluginInitConfig` (2026-01-29)
+- **CRITICAL**: Accessor import path `framework.accessor.accessorapi` → `framework.accessorapi` (2026-01-29)
+- **CRITICAL**: 14+ compilation errors resolved (2026-01-29)
 - POM artifact ID mismatch (`argonath-one-api-adapter` → `argonath-mod-api-adapter`)
-- Class naming inconsistency (`ArgonathPluginInitconfig` → `ArgonathPluginInitConfig`)
+- Constructor name typo in ArgonathPluginInitConfig (2026-01-29)
 
 ### Security
 
