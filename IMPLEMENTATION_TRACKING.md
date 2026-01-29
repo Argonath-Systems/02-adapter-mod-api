@@ -1,9 +1,10 @@
 # Adapter Mod API - Implementation Tracking
 
 > **Module**: `02-adapter-mod-api`  
-> **Status**: ⬜ SKELETON  
-> **Last Updated**: 2026-01-27  
-> **Version**: 0.1.0
+> **Status**: ⬜ SKELETON (~38%)  
+> **Last Updated**: 2026-01-29  
+> **Version**: 0.1.0  
+> **Specification**: [SA-ADAPTER-002-mod-api-adapter.md](../00-Argonath-Specifications/SA-ADAPTER-002-mod-api-adapter.md)
 
 ---
 
@@ -17,24 +18,25 @@ The Adapter Mod API provides the plugin entry points and mod registration infras
 
 | Category | Complete | Total | Percentage |
 |----------|----------|-------|------------|
-| Plugin Entry Points | 2 | 2 | 100% |
+| Plugin Entry Points | 3 | 3 | 100% |
 | Mod Registration | 0 | 3 | 0% |
 | Lifecycle Management | 0 | 2 | 0% |
-| **Overall** | **2** | **7** | **~30%** |
+| **Overall** | **3** | **8** | **~38%** |
 
 ---
 
 ## Component Matrix
 
-| Component | Class | Status | Description |
-|-----------|-------|--------|-------------|
-| Argonath Plugin | `ArgonathPlugin` | ✅ | Base plugin class |
-| Hytale Mod API Plugin | `HytaleModApiPlugin` | ✅ | Hytale entry point |
-| Mod Registry | `ModRegistry` | ⬜ | Mod registration |
-| Mod Loader | `ModLoader` | ⬜ | Dynamic mod loading |
-| Dependency Resolver | `DependencyResolver` | ⬜ | Mod dependency ordering |
-| Lifecycle Manager | `LifecycleManager` | ⬜ | Enable/disable hooks |
-| Config Provider | `ModConfigProvider` | ⬜ | Per-mod configuration |
+| Component | Class | Spec | Status | Description |
+|-----------|-------|------|--------|-------------|
+| Argonath Plugin | `ArgonathPlugin` | MA-001 | ✅ | Base plugin class |
+| Hytale Mod API Plugin | `HytaleModApiPlugin` | MA-003 | ✅ | Hytale entry point |
+| Plugin Init Config | `ArgonathPluginInitConfig` | MA-002 | ✅ | Init context wrapper |
+| Mod Registry | `ModRegistry` | MA-004 | ⬜ | Mod registration |
+| Mod Loader | `ModLoader` | MA-005 | ⬜ | Dynamic mod loading |
+| Dependency Resolver | `DependencyResolver` | MA-006 | ⬜ | Mod dependency ordering |
+| Lifecycle Manager | `LifecycleManager` | MA-007 | ⬜ | Enable/disable hooks |
+| Config Provider | `ModConfigProvider` | - | ⬜ | Per-mod configuration |
 
 ---
 
@@ -44,6 +46,8 @@ The Adapter Mod API provides the plugin entry points and mod registration infras
 com.argonathsystems.adapter.modapi/
 ├── ArgonathPlugin.java            ✅ Complete
 ├── HytaleModApiPlugin.java        ✅ Complete
+├── api/
+│   └── ArgonathPluginInitConfig.java  ✅ Complete
 ├── registry/
 │   ├── ModRegistry.java           ⬜ Not Started
 │   └── ModEntry.java              ⬜ Not Started
@@ -78,6 +82,35 @@ com.argonathsystems.adapter.modapi/
 
 ---
 
+## Architectural Issues
+
+> **Last Audit**: 2026-01-29  
+> **Auditor**: HytaleArchitect
+
+| Issue | Severity | Status | Notes |
+|-------|----------|--------|-------|
+| Hytale types in public API | 🔴 Critical | ✅ Documented | Design decision documented in SA-ADAPTER-002 |
+| No specification exists | 🟢 Resolved | ✅ Created | SA-ADAPTER-002 created 2026-01-29 |
+| POM artifact ID mismatch | 🟢 Resolved | ✅ Fixed | Changed to `argonath-mod-api-adapter` |
+| Class naming inconsistency | 🟢 Resolved | ✅ Fixed | Renamed to `ArgonathPluginInitConfig` |
+| Unused dead code | 🟢 Resolved | ✅ Fixed | `ArgonathPluginInit.java` already removed |
+| No test coverage | 🟡 Medium | ⏳ Pending | 0% test coverage |
+| README placeholder content | 🟡 Medium | ⏳ Pending | Generic features list |
+
+---
+
+## Orphan Features (No Specification)
+
+| Feature | Location | Proposed Spec | Priority | Notes |
+|---------|----------|---------------|----------|-------|
+| ~~ArgonathPlugin base class~~ | ~~`api/ArgonathPlugin.java`~~ | ✅ SA-ADAPTER-002 | ✅ | **RESOLVED** - Specification created |
+| ~~Plugin init wrapper~~ | ~~`api/ArgonathPluginInitConfig.java`~~ | ✅ SA-ADAPTER-002 | ✅ | **RESOLVED** - Specification created |
+| ~~HytaleModApiPlugin entry~~ | ~~`hytalemodapi/HytaleModApiPlugin.java`~~ | ✅ SA-ADAPTER-002 | ✅ | **RESOLVED** - Specification created |
+
+**All orphan features now covered by [SA-ADAPTER-002](../00-Argonath-Specifications/SA-ADAPTER-002-mod-api-adapter.md)**
+
+---
+
 ## Roadmap
 
 | Version | Target | Features |
@@ -89,6 +122,14 @@ com.argonathsystems.adapter.modapi/
 ---
 
 ## Changelog
+
+### v0.1.0 (2026-01-29) - Audit & Cleanup
+- **AUDIT**: Comprehensive architecture review by HytaleArchitect
+- **FIXED**: POM artifact ID mismatch (`argonath-one-api-adapter` → `argonath-mod-api-adapter`)
+- **FIXED**: Class naming inconsistency (`ArgonathPluginInitconfig` → `ArgonathPluginInitConfig`)
+- **REMOVED**: Unused `ArgonathPluginInit.java` (dead code)
+- **DOCUMENTED**: Architectural issues and orphan features
+- **IDENTIFIED**: Critical issue - Hytale types in public API violates platform abstraction
 
 ### v0.1.0 (2026-01-27)
 - Basic plugin entry points

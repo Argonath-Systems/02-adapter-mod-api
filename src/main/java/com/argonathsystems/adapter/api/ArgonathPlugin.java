@@ -5,14 +5,14 @@ import com.hypixel.hytale.server.core.plugin.JavaPluginInit;
 
 public abstract class ArgonathPlugin extends JavaPlugin {
     
-    private final ArgonathPluginInitconfig argonathInit;
+    private final ArgonathPluginInitConfig argonathInit;
 
     public ArgonathPlugin(JavaPluginInit init) {
         super(init);
-        this.argonathInit = new ArgonathPluginInitconfig(init);
+        this.argonathInit = new ArgonathPluginInitConfig(init);
     }
     
-    public ArgonathPluginInitconfig getArgonathInit() {
+    public ArgonathPluginInitConfig getArgonathInit() {
         return argonathInit;
     }
 }
