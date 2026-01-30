@@ -1,4 +1,4 @@
-package com.argonathsystems.adapter.hytalemodapi;
+package com.argonathsystems.adapter.api.hytale;
 
 import com.argonathsystems.adapter.api.ArgonathPluginContext;
 import com.argonathsystems.framework.accessorapi.*;
