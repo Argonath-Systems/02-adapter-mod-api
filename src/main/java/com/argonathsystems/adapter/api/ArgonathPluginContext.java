@@ -83,6 +83,13 @@ public interface ArgonathPluginContext {
      */
     StorageAccessor getStorageAccessor();
     
+    /**
+     * Get the entity accessor for entity management operations.
+     * 
+     * @return Entity accessor instance
+     */
+    EntityAccessor getEntityAccessor();
+    
     // TODO: Add TextStylingAccessor when available in accessor framework
     // /**
     //  * Get the text styling accessor for formatted text.

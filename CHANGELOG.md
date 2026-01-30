@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **MIGRATION-001 Pattern Adoption**: Platform-agnostic plugin lifecycle (2026-01-29)
 - Dependencies: slf4j-api and argonath-grey-havens-accessor (2026-01-29)
 - ArgonathPluginContext interface for framework service access (2026-01-29)
+- `getEntityAccessor()` method to ArgonathPluginContext interface (2026-01-30)
 
 ### Changed
 - **BREAKING**: ArgonathPlugin now follows MIGRATION-001 pattern (does NOT extend JavaPlugin)
