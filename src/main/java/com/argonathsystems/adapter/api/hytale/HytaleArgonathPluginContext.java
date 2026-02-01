@@ -28,16 +28,19 @@ public class HytaleArgonathPluginContext implements ArgonathPluginContext {
     private final AccessorProvider provider;
     private final String pluginName;
     private final Path dataFolder;
+    private final Class<?> pluginClass;
 
     /**
      * Create a new Hytale plugin context.
      * 
      * @param hytalePlugin The Hytale JavaPlugin instance
      * @param pluginName The name of the plugin (for logging)
+     * @param pluginClass The plugin class (used for resource loading from the plugin's JAR)
      */
-    public HytaleArgonathPluginContext(JavaPlugin hytalePlugin, String pluginName) {
+    public HytaleArgonathPluginContext(JavaPlugin hytalePlugin, String pluginName, Class<?> pluginClass) {
         this.hytalePlugin = hytalePlugin;
         this.pluginName = pluginName;
+        this.pluginClass = pluginClass;
         this.logger = LoggerFactory.getLogger(pluginName);
         this.provider = AccessorRegistry.getProvider();
         
@@ -99,8 +102,10 @@ public class HytaleArgonathPluginContext implements ArgonathPluginContext {
 
     @Override
     public InputStream getResource(String path) {
-        // Load resource from the classpath (inside the JAR)
-        return getClass().getClassLoader().getResourceAsStream(path);
+        // Load resource from the plugin's classpath (inside the plugin JAR)
+        // We use the plugin class's classloader, not this class's classloader,
+        // because each plugin has its own JAR with its own classloader
+        return pluginClass.getClassLoader().getResourceAsStream(path);
     }
 
     @Override

@@ -51,11 +51,16 @@ public abstract class HytalePluginWrapper<T extends ArgonathPlugin> extends Java
         super(init);
         
         try {
-            // Create the context bridging Hytale to Argonath
-            this.context = new HytaleArgonathPluginContext(this, getPluginName());
-            
-            // Create the wrapped plugin instance
+            // Create the wrapped plugin instance first (needed for classloader)
             this.wrappedPlugin = pluginFactory.create();
+            
+            // Create the context bridging Hytale to Argonath
+            // Pass the plugin class so resources are loaded from the plugin's JAR
+            this.context = new HytaleArgonathPluginContext(
+                this, 
+                getPluginName(), 
+                this.wrappedPlugin.getClass()
+            );
             
             // Initialize the plugin with our context
             // This will call onEnable() on the wrapped plugin
