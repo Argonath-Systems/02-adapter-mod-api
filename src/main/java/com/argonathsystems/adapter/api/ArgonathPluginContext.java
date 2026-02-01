@@ -3,6 +3,9 @@ package com.argonathsystems.adapter.api;
 import com.argonathsystems.framework.accessorapi.*;
 import org.slf4j.Logger;
 
+import java.io.InputStream;
+import java.nio.file.Path;
+
 /**
  * Platform-agnostic plugin context providing access to all framework services.
  * 
@@ -90,13 +93,69 @@ public interface ArgonathPluginContext {
      */
     EntityAccessor getEntityAccessor();
     
-    // TODO: Add TextStylingAccessor when available in accessor framework
-    // /**
-    //  * Get the text styling accessor for formatted text.
-    //  * 
-    //  * @return Text styling accessor instance
-    //  */
-    // TextStylingAccessor getTextStylingAccessor();
+    // =========================================================================
+    // Data Folder and Resource Management
+    // =========================================================================
+
+    /**
+     * Get the data folder for this plugin.
+     * 
+     * <p>This folder is where the plugin should store configuration files,
+     * data files, and any other persistent resources. The folder is created
+     * if it doesn't exist.</p>
+     * 
+     * <h3>Example Usage:</h3>
+     * <pre>{@code
+     * Path configFile = getContext().getDataFolder().resolve("config.yml");
+     * Path mapsDir = getContext().getDataFolder().resolve("maps");
+     * }</pre>
+     * 
+     * @return Path to the plugin's data folder
+     */
+    Path getDataFolder();
+
+    /**
+     * Get a resource bundled with the plugin JAR.
+     * 
+     * <p>Loads resources from the classpath (inside the JAR file). Returns
+     * null if the resource is not found.</p>
+     * 
+     * <h3>Example Usage:</h3>
+     * <pre>{@code
+     * try (InputStream is = getContext().getResource("default-config.yml")) {
+     *     if (is != null) {
+     *         // Process the resource
+     *     }
+     * }
+     * }</pre>
+     * 
+     * @param path Path to the resource relative to resources root (e.g., "maps/default.png")
+     * @return InputStream for the resource, or null if not found
+     */
+    InputStream getResource(String path);
+
+    /**
+     * Save a bundled resource to the data folder.
+     * 
+     * <p>Extracts a resource from the plugin JAR to the plugin's data folder.
+     * This is useful for extracting default configuration files or assets
+     * on first run.</p>
+     * 
+     * <h3>Example Usage:</h3>
+     * <pre>{@code
+     * // Extract default config if it doesn't exist
+     * Path configPath = getContext().getDataFolder().resolve("config.yml");
+     * if (!Files.exists(configPath)) {
+     *     getContext().saveResource("config.yml", "config.yml");
+     * }
+     * }</pre>
+     * 
+     * @param resourcePath Path to the resource in the JAR
+     * @param destinationPath Path relative to data folder where file will be saved
+     * @throws java.io.IOException if the resource cannot be saved
+     */
+    void saveResource(String resourcePath, String destinationPath) throws java.io.IOException;
+
     
     // Add additional accessors as needed for migration
     // WorldAccessor, NPCAccessor, QuestAccessor, etc.
